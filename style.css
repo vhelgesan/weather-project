@@ -59,3 +59,7 @@ h3 {
   line-height: 2.5;
   color: rgba(0, 0, 0, 0.701);
 }
+footer {
+  margin-left: 25px;
+  font-style: italic;
+}
