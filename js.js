@@ -35,7 +35,7 @@ let day = days[now.getDay()];
 h2.innerHTML = `${day}, ${month} ${date}, ${year} ${hours}:${minutes}`;
 
 function showTemperature(response) {
-  let currentDegree = Math.round(response.data.main.temp);
+  let currentDegree = Math.round(celsiusTemperature);
   let currentDay = response.data.weather[0].description;
   let temperature = document.querySelector("#temperatureToday");
   temperature.innerHTML = `${currentDegree}°C ${currentDay}`;
@@ -52,5 +52,17 @@ function search(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function displayFahrenheit(event) {
+  event.preventDefault;
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperatureToday");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", displayFahrenheit);
