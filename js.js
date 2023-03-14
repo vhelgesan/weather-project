@@ -35,13 +35,19 @@ let day = days[now.getDay()];
 h2.innerHTML = `${day}, ${month} ${date}, ${year} ${hours}:${minutes}`;
 
 function showTemperature(response) {
-  let currentDegree = Math.round(celsiusTemperature);
-  let currentDay = response.data.weather[0].description;
+  let weatherDescription = document.querySelector("#description");
+  weatherDescription.innerHTML = response.data.weather[0].description;
+
   let temperature = document.querySelector("#temperatureToday");
-  temperature.innerHTML = `${currentDegree}°C ${currentDay}`;
+  temperature.innerHTML = Math.round(response.data.main.temp);
+
   let currentCity = response.data.name;
   let h1 = document.querySelector("h1");
   h1.innerHTML = currentCity;
+  let currentHumidity = document.querySelector("#humidity");
+  currentHumidity.innerHTML = response.data.main.humidity;
+  let currentWind = document.querySelector("#wind");
+  currentWind.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function search(event) {
@@ -54,12 +60,10 @@ function search(event) {
 
 function displayFahrenheit(event) {
   event.preventDefault;
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let fahrenheitTemperature = (14 * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperatureToday");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
-
-let celsiusTemperature = null;
 
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
