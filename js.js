@@ -65,8 +65,31 @@ function displayFahrenheit(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thursday", "Friday", "Saturday", "Sunday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col">
+              <div class="weather-forecast-date"> ${day} </div>
+              <img src="images/sun.jpg" width="80" /> <br />
+              <div class="weather-forecast-temperature">
+                <span class="weather-forecast-temperature-max">11° </span>
+                <span class="weather-forecast-temperature-min"> 4°</span>
+              </div>`;
+    forecastHTML = forecastHTML + `</div>`;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", displayFahrenheit);
+
+displayForecast();
