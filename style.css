@@ -1,6 +1,10 @@
 body {
   margin: auto;
-  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+  background: radial-gradient(
+    circle at 49% 49.5%,
+    rgb(245, 76, 100) 0%,
+    rgb(247, 129, 97) 90%
+  );
 
   max-width: 45%;
   background-size: auto;
@@ -12,7 +16,7 @@ body {
 }
 .page {
   background: linear-gradient(to top, #feada6 0%, #f5efef 100%);
-  border-radius: 10px;
+  border-radius: 16px;
   margin: 10px;
   padding: 7px;
 }
@@ -34,7 +38,7 @@ button {
   padding: 1px 15px 1px 15px;
   border-radius: 8px;
   border: 1.5px solid rgb(17, 14, 12);
-  background-color: rgb(223, 101, 19);
+  background-color: rgb(228, 117, 83);
   color: aliceblue;
 }
 
@@ -46,11 +50,11 @@ p {
 
 h1 {
   text-align: left;
-  font-size: 38px;
+  font-size: 42px;
   font-family: "Lobster", cursive;
 }
 h2 {
-  font-size: 17px;
+  font-size: 19px;
   text-align: left;
   color: rgba(0, 0, 0, 0.598);
 }
@@ -78,6 +82,6 @@ footer {
   font-style: italic;
 }
 .weatherDegree {
-  font-size: 42px;
+  font-size: 46px;
   text-align: center;
 }
