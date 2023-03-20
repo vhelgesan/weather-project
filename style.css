@@ -11,7 +11,7 @@ body {
   border-radius: 4px;
 }
 .page {
-  background-color: white;
+  background: linear-gradient(to top, #feada6 0%, #f5efef 100%);
   border-radius: 10px;
   margin: 10px;
   padding: 7px;
@@ -21,7 +21,7 @@ form {
 }
 input {
   width: 45%;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid rgba(84, 84, 215, 0.614);
 }
 ::placeholder {
@@ -32,9 +32,10 @@ input {
 
 button {
   padding: 1px 15px 1px 15px;
-  border-radius: 20px;
-  border: 1px solid orange;
-  background-color: rgb(239, 239, 20);
+  border-radius: 8px;
+  border: 1.5px solid rgb(17, 14, 12);
+  background-color: rgb(223, 101, 19);
+  color: aliceblue;
 }
 
 p {
@@ -49,20 +50,34 @@ h1 {
   font-family: "Lobster", cursive;
 }
 h2 {
-  font-size: 15px;
+  font-size: 17px;
   text-align: left;
   color: rgba(0, 0, 0, 0.598);
 }
 h3 {
-  font-size: 16px;
+  font-size: 20px;
   text-align: left;
-  line-height: 2.5;
+  line-height: 3;
   color: rgba(0, 0, 0, 0.701);
 }
 footer {
   margin-left: 25px;
   font-style: italic;
+  text-decoration: none;
 }
 .weather-forecast-temperature-min {
   opacity: 0.5;
+}
+
+.col {
+  text-transform: capitalize;
+}
+.descriptionStyling {
+  font-size: 26px;
+  text-align: center;
+  font-style: italic;
+}
+.weatherDegree {
+  font-size: 42px;
+  text-align: center;
 }

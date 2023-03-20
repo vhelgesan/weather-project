@@ -48,6 +48,12 @@ function showTemperature(response) {
   currentHumidity.innerHTML = response.data.main.humidity;
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = Math.round(response.data.wind.speed);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+    (width = 100)
+  );
 
   getForecast(response.data.coord);
 }
@@ -58,20 +64,21 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function search(event) {
-  event.preventDefault();
+function search(currentCity) {
   let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
-  let city = document.querySelector("#currentPlace").value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
-function displayFahrenheit(event) {
-  event.preventDefault;
-  let fahrenheitTemperature = (14 * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperatureToday");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let cityInputElement = document.querySelector("#currentPlace");
+  search(cityInputElement.value);
 }
+
+search("Cork");
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -107,7 +114,7 @@ function displayForecast(response) {
             forecastDay.weather[0].icon
           }@2x.png"
           alt=""
-          width="42"
+          width="80"
         />
               <div class="weather-forecast-temperature">
                 <span class="weather-forecast-temperature-max"> ${Math.round(
@@ -125,7 +132,4 @@ function displayForecast(response) {
 }
 
 let form = document.querySelector("form");
-form.addEventListener("submit", search);
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", displayFahrenheit);
+form.addEventListener("submit", handleSubmit);
